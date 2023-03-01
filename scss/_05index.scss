@@ -1,0 +1,28 @@
+// 讀取 變數 檔案 ; @use 區域性 ; 一次性 ; 規則 檔案要另給名稱 ; 基於檔案的安全性 ; 要放置在所有語法最上層
+@use '_01variable/variable' as Var;
+// 滿版設計 section id="taste" : 設定寬 100 高 100 背景顏色
+#taste {
+    width: Var.$Num_10 * 10 * Var.$Per;
+    height: Var.$Num_10 * 10 * Var.$Per;
+    background-color:burlywood;
+}
+// 子選擇器(指定階層 > : 同層之中不能有相同的標籤,若有相同須設定 id 或 class) ; 子孫選擇器(跨標籤讀取 利用「空格」)
+// 巢狀寫法
+// menu(背景圖片取代文字呈現) 與 Logo(水平垂直置中) 要同一列 ; 聯絡資訊要個別一列(文字寬度為90% ; 文字靠右對齊,文字顏色 咖啡色) ; 隱藏項目符號
+header {
+    // 顯示方法 : 彈性佈局(智能對齊) ; 在需要排版物件的父框架設定 ; 會將所有的子物件排成一列
+    display: flex;
+    // 換行,將子物件設定為 兩列 ; 預設值會自動判斷 子物件 的寬度(均分) ; 要設定 子物件 的寬度才會有作用
+    flex-wrap: wrap;
+    list-style-type: none;
+    #menu {
+        width: Var.$Num_10 * 1.5%;
+        color: rebeccapurple;
+    }
+    h1 {
+        width: Var.$Num_10 * 8.5%;
+    }
+    ul {
+        width: Var.$Num_10 * 10%;
+    }
+}

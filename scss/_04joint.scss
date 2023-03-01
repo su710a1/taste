@@ -1,7 +1,13 @@
+@use '_01variable/variable' as Var;
 // 通用選擇器*
 *{
     // 外間距 上下為0 左右自動 ; 四個值 上右下左
     margin: 0 auto;
     // 內間距 
     padding: 0;
+}
+
+// 設定 高度單位為 % 時,高度會自動展開
+html, body {
+    height: Var.$Num_10 * 10%;
 }
