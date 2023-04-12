@@ -125,3 +125,63 @@ main{
         }
     }
 }
+
+@include R.Rwd(lg){
+    #taste{
+        //height: auto;
+        //height: Var.$Num_10 * 10%;//若父框架給高會清除浮動
+    }
+
+    // 浮動語法 float : 會脫離原來的父框架
+    header {
+        width: Var.$Num_10 * 4%;
+        float: left;
+        background-color: brown;
+    }
+
+    main, #menu {
+        width: Var.$Num_10 * 6%;
+        height: Var.$Num_10 * 8%;
+        float: right;
+        background-color: olivedrab;
+    }
+
+    footer {
+        width: Var.$Num_10 * 6%;
+        height: Var.$Num_10 * 2%;
+        float: right;
+        // //清除全部的浮動效果
+        // clear: both;
+        background-color: goldenrod;
+    }
+
+    
+    // #taste{
+    //     display: flex;
+    //     flex-wrap: wrap;
+    // }
+    // header{
+    //     width: Var.$Num_10 * 4%;
+    //     height: Var.$Num_10 * 10%;
+    //     background-color: brown;
+    // }
+    // main, #menu{
+    //     width: Var.$Num_10 * 6%;
+    //     height: Var.$Num_10 * 8%;
+    //     background-color: olivedrab;
+    //     nav{
+    //         position: absolute;
+    //         //right: 0;
+    //         background-color: blueviolet;
+    //     }
+    // }
+    // footer{
+    //     width: Var.$Num_10 * 6%;
+    //     height: Var.$Num_10 * 2%;
+    //     // 定位方式 絕對位置 依照body為對齊原點
+    //     position: absolute;
+    //     right: 0;
+    //     bottom: 0;
+    //     background-color: goldenrod;
+    // }
+}
