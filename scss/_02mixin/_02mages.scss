@@ -1,0 +1,14 @@
+@mixin Images($Pos, $Size, $Folder, $Img){
+    // 背景圖片取代文字顯示
+    // 1.設定背景圖片連結 2.背景圖片不重複 3.背景圖片的對齊(定位點XY-水平垂直置中)
+    // 4.位移文字(首行縮排-班行文字的第一行) 5. 圖片尺寸設定(預設值:自動)
+    background-image: url(../../images/#{$Folder}/#{$Img});//url(../../images/icons/list.svg);
+    
+    background-position: $Pos;//center;
+    // auto(預設值:自動) cover(滿版覆蓋框架尺寸) contain(滿版留白) | 個別設XY的值(例如:background-size: 50% 30%;)
+    background-size: $Size;//contain;
+
+    //不變動
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+}

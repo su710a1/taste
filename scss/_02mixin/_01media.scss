@@ -1,0 +1,31 @@
+// minin(混用),可以在語法內寫入CSS語法、計算方式或是判斷式:可以設定呼叫參數的方式
+@use '../_01variable/variable' as Var;
+
+// 媒體判斷點 @if @else if
+@mixin Rwd($width) {
+    @if $width == sm {
+        @media screen and (min-width: Var.$sm) {
+            @content;
+        }
+    }
+    @else if $width == md {
+        @media screen and (min-width: Var.$md) {
+            @content;
+        }
+    }
+    @else if $width == lg {
+        @media screen and (min-width: Var.$lg) {
+            @content;
+        }
+    }
+    @else if $width == xl {
+        @media screen and (min-width: Var.$xl) {
+            @content;
+        }
+    }
+    @else if $width == xxl {
+        @media screen and (min-width: Var.$xxl) {
+            @content;
+        }
+    }
+}

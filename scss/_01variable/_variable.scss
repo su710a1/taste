@@ -8,5 +8,10 @@ $Per: 1%; // percentage
 $Num_10: 10;
 
 // 設定媒體判斷尺寸的變數
-$Width-Small: 576px;
-$Width-Medium: 768px;
+//$Width-Small: 576px;
+//$Width-Medium: 768px;
+$sm: 576px;//"screen and (min-width: 576px)";
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
