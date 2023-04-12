@@ -74,3 +74,22 @@ main {
     width: 100%;
   }
 }
+@media screen and (min-width: 992px) {
+  header {
+    width: 40%;
+    float: left;
+    background-color: brown;
+  }
+  main, #menu {
+    width: 60%;
+    height: 80%;
+    float: right;
+    background-color: olivedrab;
+  }
+  footer {
+    width: 60%;
+    height: 20%;
+    float: right;
+    background-color: goldenrod;
+  }
+}
