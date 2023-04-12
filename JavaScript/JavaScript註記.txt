@@ -1,0 +1,26 @@
+控制台 Console
+Enter 執行 ; Shift+Enter 換行 ; 
+瀏覽器的控制台,是用來測試 JavaScript 程式執行的結果
+Console 的 API (串接系統)
+1. 邏輯判斷式 assert(邏輯判斷式,錯誤訊息)
+    結果只有真(Ture)跟假(False),只會呈現錯誤的訊息
+2. error(錯誤訊息)
+    系統自帶
+3. warn(警告訊息)
+    可以自訂
+4. clear() 清除瀏覽器執行的所有 console 資料
+    console.clear();
+5. count() 顯示呼叫次數
+6. group() 與 groupEnd() 開始分組 結束分組
+    console.log("Hi");
+    console.group("A組");
+    console.log("Hello");
+    console.log("這裡是A組裡的訊息");
+    console.groupEnd();
+    console.log("離開分組");
+7. time(label) 與 timeEnd(label) 開始計時 結束計時 時間單位毫秒(1000 ms)
+    console.time("執行100次後的時間");
+    for (let i = 0; i < 100; i++) {
+        console.log("Hi");
+    }
+    console.timeEnd("執行100次後的時間");
