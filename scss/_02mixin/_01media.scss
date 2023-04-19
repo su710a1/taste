@@ -3,7 +3,12 @@
 
 // 媒體判斷點 @if @else if
 @mixin Rwd($width) {
-    @if $width == sm {
+    @if $width == xs {
+        @media screen and (min-width: Var.$xs) {
+            @content;
+        }
+    }
+    @else if $width == sm {
         @media screen and (min-width: Var.$sm) {
             @content;
         }
@@ -27,5 +32,86 @@
         @media screen and (min-width: Var.$xxl) {
             @content;
         }
+    }
+}
+
+@mixin FloatBox() {
+    // 利用偽元素 ::after(之後)來處理浮動問題
+    .clearfix::after{
+        //新增 content 空物件
+        content:"";
+        //顯示的方式:區塊
+        display: block;
+        clear: both;
+    }
+    // 浮動語法 float : 會脫離原來的父框架
+    header {
+        width: V.$Num_10 * 4%;
+        height: V.$Num_10 * 10%;
+        float: left;
+        
+        #menu {
+            display: none;
+        }
+        h1 {
+            width: V.$Num_10 * 10%;
+        }
+        ul {
+            width: V.$Num_10 * 8%;
+            text-align: right;
+            font-size: 1.2rem;
+        }
+    }
+    main, #menu {
+        width: V.$Num_10 * 6%;
+        height: V.$Num_10 * 8%;
+        float: right;
+        background-color: gold;
+    }
+    footer {
+        width: V.$Num_10 * 6%;
+        height: V.$Num_10 * 2%;
+        float: right;
+        background-color: olive;
+    }
+}
+@mixin FlexBox() {
+    #taste{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    header{
+        width: Var.$Num_10 * 4%;
+        height: Var.$Num_10 * 10%;
+        background-color: brown;
+        #menu {
+            display: none;
+        }
+    }
+    main, #menu{
+        width: Var.$Num_10 * 6%;
+        height: Var.$Num_10 * 8%;
+        background-color: olivedrab;
+        nav{
+            background-color: blueviolet;
+        }
+    }
+    footer{
+        width: Var.$Num_10 * 6%;
+        height: Var.$Num_10 * 2%;
+        // 定位方式 絕對位置 依照body為對齊原點
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: goldenrod;
+    }
+}
+@mixin Clearfix() {
+    .clearfix::after {
+        //新增 content 空物件
+        content:"";
+        //顯示的方式:區塊
+        display: block;
+        clear: both;
     }
 }
