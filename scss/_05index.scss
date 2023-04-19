@@ -77,7 +77,7 @@
             // 須配合定位點:絕對值
             position: absolute;
             background-color: white;
-            // display: none;
+            display: none;
     
             $MenuHeaderH:V.$Num_10 * 15;
             //父框架設置定位點relative,子物件設置定位點absolute,系統會將「body」的原點位置,重新定給「父框架」使用

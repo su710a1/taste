@@ -54,6 +54,7 @@ html, body {
     z-index: 99;
     position: absolute;
     background-color: white;
+    display: none;
   }
   header nav #menuheader {
     height: 150px;
