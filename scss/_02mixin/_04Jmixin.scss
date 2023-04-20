@@ -3,3 +3,55 @@
     width: V.$Num_10 * 10%;
     height: V.$Num_10 * 10%;
 }
+//1.動畫名稱 2.動畫總秒數 3.動畫速度曲線 4.動畫撥放次數
+@mixin BannerRound{
+	animation:RoundAN 25s linear infinite;
+	-webkit-animation:RoundAN 25s linear infinite;
+}
+@keyframes RoundAN{
+    // 1.總張數5張 2.總秒數25s 3.淡入淡出(1s)靜止(4s)
+    // 動畫總秒數為100% ; 計算1s為多少百分比 100% / 25s = 4% ; 動畫計算為累加時間
+
+    // 0~1 淡入
+    //圖片透明度:濾鏡透明度
+    4%{
+        opacity:1;
+        filter:alpha(opacit=100);
+        -webkit-filter:alpha(opacit=100);
+    }
+    // 1~5 靜止
+    20%{
+        opacity:1;
+        filter:alpha(opacit=100);
+        -webkit-filter:alpha(opacit=100);
+    }
+    // 5~6 淡出
+    24%{
+        opacity:0;
+        filter:alpha(opacit=0);
+        -webkit-filter:alpha(opacit=0);
+    }
+}
+@mixin BannerDelay{
+    //動畫物件 選取第n個子物件
+    li:nth-child(5){
+        animation-delay:0s;
+        display: block;
+    }
+    li:nth-child(4){
+        animation-delay:5s;
+        display: block;
+    }
+    li:nth-child(3){
+        animation-delay:10s;
+        display: block;
+    }
+    li:nth-child(2){
+        animation-delay:15s;
+        display: block;
+    }
+    li:nth-child(1){
+        animation-delay:20s;
+        display: block;
+    }
+}

@@ -21,16 +21,23 @@
         position: absolute;
         z-index: V.$ZNumNeg;
         // 定位點:停佇
-        position: fixed;
+        // position: fixed;
         top: 0;
-        background-color: wheat;
+        // background-color: wheat;
 
         ul {
             @include JM.WH();
+            position: relative;
+
             li {
                 @include JM.WH();
+                @include JM.BannerRound;
+                // 動畫 格式預設值
+                opacity: 0;
+                filter: alpha(opacit=0);
+                -webkit-filter:alpha(opacit=0);
                 position: absolute;
-                background-color: rgb(9, 188, 194);
+                // background-color: rgb(9, 188, 194);
             }
             .Images1 {@include Img.Images(center, cover, photo, "001.jpg");}
             .Images2 {@include Img.Images(center, cover, photo, "002.jpg");}
@@ -38,6 +45,7 @@
             .Images4 {@include Img.Images(center, cover, photo, "004.jpg");}
             .Images5 {@include Img.Images(center, cover, photo, "005.jpg");}
         }
+        @include JM.BannerDelay;
     }
     $HeaderHeight: V.$Num_10 * 5px;
     $FooterHeight: V.$Num_10 * 12px;
