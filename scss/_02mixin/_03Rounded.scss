@@ -1,0 +1,7 @@
+@mixin Rounded($R) {
+    border-radius: $R;
+    -webkit-border-radius: $R;
+    -moz-border-radius: $R;
+    -ms-border-radius: $R;
+    -o-border-radius: $R;
+}

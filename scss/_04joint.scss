@@ -6,10 +6,18 @@
     margin: 0 auto;
     // 內間距 
     padding: 0;
+    // 隱藏 項目符號
     list-style-type: none;
 }
 
 // 設定 高度單位為 % 時,高度會自動展開
 html, body {
     height: Var.$Num_10 * 10%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+//圖片等比縮放
+img {
+    width: 100%;
+    height: auto;
 }

@@ -1,12 +1,14 @@
 // 讀取 變數 檔案 ; @use 區域性 ; 一次性 ; 規則 檔案要另給名稱 ; 基於檔案的安全性 ; 要放置在所有語法最上層
 @use '_01variable/variable' as V;
 @use '_02mixin/01media' as R;
-@use '_02mixin/02mages' as Img;
+@use '_02mixin/02images' as Img;
+@use '_02mixin/03Rounded' as Ro;
+@use '_02mixin/04Jmixin' as JM;
 // 滿版設計 section id="taste" : 設定寬 100 高 100 背景顏色
 #taste {
     width: V.$Num_10 * 10 * V.$Per;
     height: V.$Num_10 * 10 * V.$Per;
-    background-color:burlywood;
+    // background-color:burlywood;
 }
 // 子選擇器(指定階層 > : 同層之中不能有相同的標籤,若有相同須設定 id 或 class) ; 子孫選擇器(跨標籤讀取 利用「空格」)
 // 巢狀寫法
@@ -14,17 +16,48 @@
 
 // #{} 格式,會將「變數設定成字串」的內容轉譯為「選擇器」或是「屬性名稱」
 @include R.Rwd(xs){
-    $FooterHeight: V.$Num_10 * 5px;
+    #Banner {
+        @include JM.WH();
+        position: absolute;
+        z-index: V.$ZNumNeg;
+        // 定位點:停佇
+        position: fixed;
+        top: 0;
+        background-color: wheat;
+
+        ul {
+            @include JM.WH();
+            li {
+                @include JM.WH();
+                position: absolute;
+                background-color: rgb(9, 188, 194);
+            }
+            .Images1 {@include Img.Images(center, cover, photo, "001.jpg");}
+            .Images2 {@include Img.Images(center, cover, photo, "002.jpg");}
+            .Images3 {@include Img.Images(center, cover, photo, "003.jpg");}
+            .Images4 {@include Img.Images(center, cover, photo, "004.jpg");}
+            .Images5 {@include Img.Images(center, cover, photo, "005.jpg");}
+        }
+    }
+    $HeaderHeight: V.$Num_10 * 5px;
+    $FooterHeight: V.$Num_10 * 12px;
     header {
+        width: V.$Num_10 * 10%;
+        height: $HeaderHeight;
         // 顯示方法 : 彈性佈局(智能對齊) ; 在需要排版物件的父框架設定 ; 會將所有的子物件排成一列
         display: flex;
         // 換行,將子物件設定為 兩列 ; 預設值會自動判斷 子物件 的寬度(均分) ; 要設定 子物件 的寬度才會有作用
         flex-wrap: wrap;
         list-style-type: none;
+        // 定位點:停佇
+        position: fixed;
+        top: 0;
+
+        // position: absolute;
+        // z-index: V.$ZNum_5;
 
         #menu {
             width: V.$Num_10 * 1.5%;
-            height: 50px;
             // 文字顏色
             color: rebeccapurple;
             // // 背景圖片取代文字顯示
@@ -39,6 +72,7 @@
             @include Img.Images(center, contain, icons, "list.svg");//@mixin Images($Pos, $Size, $Folder, $Img)
     
             background-color: blue;
+            // #{} 格式,會將「變數設定成字串」的內容轉譯為「選擇器」或是「屬性名稱」
         }
         h1 {
             width: V.$Num_10 * 8.5%;
@@ -52,36 +86,23 @@
                 //上間距 margin-top
                 margin-top: calc(( 50px - 32px ) / 2 );
             }
-            
-            // @media #{Var.$sm} {
-            // //@media screen and (min-width: Var.$Width-Small) {
-            //     width: Var.$Num_10 * 8.7%;
-            //     background-color: royalblue;
-            // }
-    
-            // @include R.Rwd(sm){
-            //     width: Var.$Num_10 * 8.7%;
-            //     background-color: greenyellow;
-            // }
         }
         .ConnBox {
-            width: V.$Num_10 * 10%;
-            position: absolute;
-            bottom: calc( $FooterHeight + 10px );
+            display: none;
         }
         nav{
-            width: V.$Num_10 * 10%;
-            height: V.$Num_10 * 10%;
+            @include JM.WH();
             //重(層)疊順序 設定值 auto(自動) | 整數(數字越大,重(層)疊順序越上層)
             z-index: V.$ZNum_99;
             // 須配合定位點:絕對值
             position: absolute;
             background-color: white;
-            display: none;
+            display: none; // 隱藏開關
     
             $MenuHeaderH:V.$Num_10 * 15;
             //父框架設置定位點relative,子物件設置定位點absolute,系統會將「body」的原點位置,重新定給「父框架」使用
             #menuheader{
+                width: V.$Num_10 * 10%;
                 height: calc( $MenuHeaderH * 1px);
                 // position: relative;// 重新定位
                 // 彈性佈局
@@ -95,24 +116,6 @@
                 background-color: V.$Blue-Green;
         
                 #close{
-                    // width: V.$Num_10 * 10%;
-                    // height: 35px;
-                    // background-color: brown;
-                    // a{
-                    //     // 顯示方式:行區塊
-                    //     display: inline-block;
-                    //     // 文字尺寸取代高度
-                    //     font-size: 1.5rem;
-                    //     // 文字設定內間距
-                    //     padding: 1%;
-                    //     //// 定位點:絕對 //定位點 與 float 二擇一
-                    //     //// position: absolute;
-                    //     //// right: 0;
-                    //     // 浮動元素
-                    //     float: right;
-                    //     background-color: red;
-                    // }
-    
                     //顯示方式:inline-block(行內區塊層級):以內容的寬度為主
                     display: inline-block;
                     // 文字尺寸替代高度
@@ -132,7 +135,6 @@
                     
                     // 若float:right與display:inline-block一起用,系統將視為display:block
                     // float: right;
-                    //background-color: yellowgreen;
     
                     a {
                         // 因為之後是用JavaScript控制所以不用設定感應區
@@ -180,23 +182,6 @@
                 .Conn {
                     margin-top: 20px;
                 }
-                ul {
-                    display: flex;
-                    flex-wrap: wrap;
-                    li {
-                        width: V.$Num_10 * 10%;
-                        // 首行縮排
-                        text-indent: 8%;
-                        font-size: 1rem * 1.2;
-                    }
-                    .One {order: 4;}
-                    .Two {order: 5;}
-                    .Three {order: 2;}
-                    .Four {order: 1;}
-                    .Five {order: 6;}
-                    .Six {order: 3;}
-    
-                }
             }
             $MenuIconWidth: V.$Num_10 * 8.5%;
             #menuicon{
@@ -227,12 +212,66 @@
         }
     }
     
+    //選單共用區
+    .Items {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            width: V.$Num_10 * 10%;
+            // 首行縮排
+            text-indent: 8%;
+            font-size: 1rem * 1.2;
+        }
+        .One {order: 4;}
+        .Two {order: 5;}
+        .Three {order: 2;}
+        .Four {order: 1;}
+        .Five {order: 6;}
+        .Six {order: 3;}
+    }
+    #main {
+        width: V.$Num_10 * 8.5%;
+        // header的高 - nav>li 的 margin-top
+        // margin-top: $HeaderHeight - 15px;
+        margin-top: $HeaderHeight + 15px;
+        
+        nav{//background-color: rgb(111, 111, 230);
+            li {
+                width: V.$Num_10 * 10%;
+                height: 150px;
+                margin: 15px 0;
+                background-color: rgb(146, 61, 61);
+                //圓角矩形border-radius: ;
+                @include Ro.Rounded(15px);
+                text-indent: 0;
+                
+                //文字水平垂直置中
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .Null {
+            height: 135px;
+        }
+    }
+    #Banner {
+        @include JM.WH();
+        position: absolute;
+        z-index: V.$ZNumNeg;
+        // 定位點:停佇
+        position: fixed;
+        top: 0;
+        background-color: rgb(255, 208, 0);
+    }
     footer{
+        width: V.$Num_10 * 10%;
         height: $FooterHeight;
         // 定位點:停佇
         position: fixed;
         bottom: 0;
         font-size: 0.9rem;
+        background-color: V.$Blue-Green;
     }
 }
 
@@ -271,66 +310,23 @@
 @include R.Rwd(lg){
     @include R.FlexBox();
     // @include R.FloatBox();
-    // // #taste{
-    // //     //height: auto;
-    // //     //height: Var.$Num_10 * 10%;//若父框架給高會清除浮動
-    // // }
-    // // 利用偽元素 ::after(之後)來處理浮動問題
-    // .clearfix::after{
-    //     //新增 content 空物件
-    //     content:"";
-    //     //顯示的方式:區塊
-    //     display: block;
-    //     clear: both;
-    // }
-    // // 浮動語法 float : 會脫離原來的父框架
-    // header {
-    //     width: V.$Num_10 * 4%;
-    //     float: left;
-    //     background-color: brown;
-    // }
-    // main, #menu {
-    //     width: V.$Num_10 * 6%;
-    //     height: V.$Num_10 * 8%;
-    //     float: right;
-    //     background-color: olivedrab;
-    // }
-    // footer {
-    //     width: V.$Num_10 * 6%;
-    //     height: V.$Num_10 * 2%;
-    //     float: right;
-    //     // //清除全部的浮動效果
-    //     // clear: both;
-    //     background-color: goldenrod;
-    // }
-    // // #taste{
-    // //     display: flex;
-    // //     flex-wrap: wrap;
-    // // }
-    // // header{
-    // //     width: Var.$Num_10 * 4%;
-    // //     height: Var.$Num_10 * 10%;
-    // //     background-color: brown;
-    // // }
-    // // main, #menu{
-    // //     width: Var.$Num_10 * 6%;
-    // //     height: Var.$Num_10 * 8%;
-    // //     background-color: olivedrab;
-    // //     nav{
-    // //         position: absolute;
-    // //         //right: 0;
-    // //         background-color: blueviolet;
-    // //     }
-    // // }
-    // // footer{
-    // //     width: Var.$Num_10 * 6%;
-    // //     height: Var.$Num_10 * 2%;
-    // //     // 定位方式 絕對位置 依照body為對齊原點
-    // //     position: absolute;
-    // //     right: 0;
-    // //     bottom: 0;
-    // //     background-color: goldenrod;
-    // // }
+    header {
+        .ConnBox {
+            width: V.$Num_10 * 10%;
+            position: absolute;
+            bottom: 0;
+            display: block;
+            background-color: aquamarine;
+        }
+    }
+    main {
+        display: none;
+    }
+    footer{
+        .ConnBox {
+            display: none;
+        }
+    }
 }
 
 // @include R.Rwd(xl){
